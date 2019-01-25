@@ -20,9 +20,10 @@ environment : node.js  v-10.14.0  quasar cli 0.17.33
 ### 1: download cnpm
     npm install -g cnpm --registry=https://registry.npm.taobao.org
        
-### 2: install vue-cli and quasar-cli global with cnpm
+### 2: install vue-cli quasar-cli and the others global with cnpm
     cnpm i -g vue-cli
     cnpm i -g quasar-cli
+    cnpm i 
 ### 3 :  run
     quasar  dev
    
