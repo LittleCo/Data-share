@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hut.mapper.FileMapper">
+   
+   <select id="selectFileByName" parameterType="com.hut.entity.SearchTools" resultType="com.hut.entity.LocalFile">
+       select * from file_data where name like '%${name}%' order by id limit #{limit} offset #{offset}
+   </select>
+   
+   <insert id="insertAFile" parameterType="com.hut.entity.LocalFile">
+       insert into file_data values(null, #{path}, #{name}, ${size})
+   </insert>
+
+
+</mapper>
