@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="UploadFileServlet" method="post"  enctype="multipart/form-data">
+			文件名：<input name="filename" /><br/>
+			文件： <input type="file"  name="file"/>
+			<br/>
+			<input type="submit" value="上传"/>
+</form>
+	<a href="DownloadFileServlet?path=a.jpg">下载文件</a>
+</body>
+</html>

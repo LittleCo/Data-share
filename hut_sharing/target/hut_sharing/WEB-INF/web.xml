@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance  http://www.springmodules.org/schema/cache/springmodules-cache.xsd http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd       
+     ">  
+  <display-name>hut_sharing</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+ 
+ <!-- @spring with servlet-api 
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+  			classpath:applicationContext.xml
+  	</param-value>
+  </context-param>
+   -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  
+  <servlet>
+  	<servlet-name>DownloadFileServlet</servlet-name>
+  	<display-name>DownloadFileServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.hut.controller.DownloadFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SearchFileServlet</servlet-name>
+  	<display-name>SearchFileServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.hut.controller.SearchFileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DownloadFileServlet</servlet-name>
+  	<url-pattern>/DownloadFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SearchFileServlet</servlet-name>
+  	<url-pattern>/SearchFileServlet</url-pattern>
+  </servlet-mapping>
+ 
+   
+</web-app>
