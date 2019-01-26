@@ -1,7 +1,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/indexLayout.vue'),
     children: [{
         path: '',
         name:'index',
@@ -26,6 +26,10 @@ const routes = [
       {
         path: 'pages/oop',
         component: () => import('pages/OOP.vue')
+      },
+      {
+        path: 'pages/upload',
+        component: () => import('pages/upload')
       }
     ]
   },

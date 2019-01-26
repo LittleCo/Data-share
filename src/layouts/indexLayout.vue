@@ -57,6 +57,13 @@
             </q-item>
           </a>
         </div>
+        <div class="side-item">
+          <a href="../pages/upload" class="side-links">
+          <q-item>
+            <q-item-side icon="school" />
+            <q-item-main label="分享你的资料" sublabel="Thanks for sharing" />
+          </q-item></a>
+        </div>
       </q-list>
     </q-layout-drawer>
 
