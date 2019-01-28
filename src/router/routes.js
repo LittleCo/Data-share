@@ -1,9 +1,10 @@
 const routes = [
   {
     path: '/',
+    redirect: '/user/login',
     component: () => import('layouts/indexLayout.vue'),
     children: [{
-        path: '',
+        path: 'index',
         name:'index',
         component: () => import('pages/Index.vue')
       },
@@ -36,12 +37,18 @@ const routes = [
   
   {
     path: '/user',
-    redirect:'/user/login',
+    redirect: '/user/login',
     component: () => import('layouts/userLayout'),
     children: [
       {
-        path:'login',
+        path: 'login',
+        name: 'login',
         component: () => import('pages/user/login')
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('pages/user/register')
       }
     ]
   }
