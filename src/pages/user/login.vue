@@ -5,17 +5,17 @@
         Login
       </q-card-title>
       <q-card-main>
-        <q-field helper="学号" class="q-mt-lg">
-          <q-input v-model.trim="user.stuId" type="text" ref="stuId" />
+        <q-field helper="学号" class="q-mt-lg" :error="$v.user.stuId.$error" error-label="请输入学号">
+          <q-input v-model.trim="user.stuId" type="text"  ref="stuId" />
         </q-field>
-        <q-field helper="密码"  class="q-mt-lg">
+        <q-field helper="密码"  class="q-mt-lg" :error="$v.user.password.$error" error-label="请输入密码">
           <q-input v-model.trim="user.password" type="password" ref="password" @keyup.enter="login" /> 
         </q-field>
       </q-card-main>
       <q-card-separator class="q-mt-lg" />
         <q-card-action  class="button-action">
           <q-btn label="注册"  flat color="secondary" @click="$router.push({name:'register'})" />
-          <q-btn label="登录" @click="login()" icon="arrow_right_alt" color="primary"  />
+          <q-btn label="登录" @click="login()" :disable="$v.user.$invalid" icon="arrow_right_alt" color="primary"  />
         </q-card-action>
         <inner-loading :loading="loading"></inner-loading>
     </q-card>
@@ -24,6 +24,7 @@
 
 <script>
 import innerLoading from '../../components/innerLoading'
+import {minLength, required} from 'vuelidate/lib/validators'
 
 export default {
   name:'Login',
@@ -39,9 +40,15 @@ export default {
       }
     }
   },
+  validations: {
+    user: {
+      stuId: {required},
+      password: {required, minLength: minLength(6)}
+    }
+  },
   methods: {
     login() {
-      this.$v.user.$toucu()
+      this.$v.form.$touch()
       this.loading = true
       this.$store.dispatch('session/login',this.user).then(() => {
         this.loading = false
@@ -62,13 +69,13 @@ export default {
         })
       })
     },
-    checkLogin() {
-      if(!this.getCookie('session')){
-        this.$router.push({name:'login'})
-      }else {
-        this.$router.push({name:'index'})
-      }
-    },
+    // checkLogin() {
+    //   if(!this.getCookie('session')){
+    //     this.$router.push({name:'login'})
+    //   }else {
+    //     this.$router.push({name:'index'})
+    //   }
+    // },
     // 请求用户信息
     getUserInfo(){
       
@@ -76,10 +83,10 @@ export default {
   },
   // 检测是否已登录
   created() {
-    this.checkLogin()
+    // this.checkLogin()
   },
   mounted() {
-    this.$refs.user.focus()
+    this.$refs.stuId.focus()
   },
   // 检测路由变化
   watch: {

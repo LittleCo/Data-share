@@ -2,7 +2,7 @@
   <q-layout>
     <q-page-conainer>
       <!-- injected pages -->
-      <router-view></router-view>
+      <router-view />
     </q-page-conainer>
   </q-layout>
 </template>
